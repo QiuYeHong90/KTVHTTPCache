@@ -17,8 +17,10 @@
 
 NSString * const KTVHCContentTypeVideo                  = @"video/";
 NSString * const KTVHCContentTypeAudio                  = @"audio/";
-NSString * const KTVHCContentTypeM3U8                  = @"application/x-mpegURL";
-NSString * const KTVHCContentTypeM3U8Audio                 = @"audio/x-mpegurl";
+NSString * const KTVHCContentTypeM3U8                   = @"application/mpegURL";
+NSString * const KTVHCContentTypeM3U8X                  = @"application/x-mpegURL";
+NSString * const KTVHCContentTypeM3U8Audio              = @"audio/mpegurl";
+NSString * const KTVHCContentTypeM3U8AudioX             = @"audio/x-mpegurl";
 NSString * const KTVHCContentTypeApplicationMPEG4       = @"application/mp4";
 NSString * const KTVHCContentTypeApplicationOctetStream = @"application/octet-stream";
 NSString * const KTVHCContentTypeBinaryOctetStream      = @"binary/octet-stream";

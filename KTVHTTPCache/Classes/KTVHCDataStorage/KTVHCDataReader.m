@@ -101,12 +101,16 @@
             NSArray <NSString *>* listStrs = [oriM3u8String componentsSeparatedByString:@"\n"];
             NSMutableArray * newListStrs = @[].mutableCopy;
             for (NSString *object in listStrs) {
-                if ([object hasSuffix:@".ts"]) {
+                //兼容带参数的
+                if ([object hasSuffix:@".ts"] || [object containsString:@".ts?"]) {
                     NSString * newStr = object;
-                    if (isHasFormat) {
-                        newStr = [newStr stringByReplacingOccurrencesOfString:@"../" withString:formatStr];
-                    } else {
-                        newStr = [NSString stringWithFormat:@"%@%@",formatStr,object];
+                    //兼容老格式 #EXTINF:2, xxx 的分片ts地址是全地址的情况
+                    if (![newStr containsString:formatStr]) {
+                        if (isHasFormat || [object hasPrefix:@"../"]) {
+                            newStr = [newStr stringByReplacingOccurrencesOfString:@"../" withString:formatStr];
+                        } else {
+                            newStr = [NSString stringWithFormat:@"%@%@",formatStr,object];
+                        }
                     }
                     
                     NSURL * oringalUrl = [[NSURL alloc] initWithString: newStr];
