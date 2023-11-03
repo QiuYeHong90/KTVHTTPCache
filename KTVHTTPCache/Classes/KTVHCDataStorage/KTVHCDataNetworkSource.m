@@ -171,7 +171,7 @@
         return;
     }
     BOOL isM3u8 = NO;
-    NSArray <NSString *>* listM3u8 = @[KTVHCContentTypeM3U8,KTVHCContentTypeM3U8Audio];
+    NSArray <NSString *>* listM3u8 = @[KTVHCContentTypeM3U8, KTVHCContentTypeM3U8X, KTVHCContentTypeM3U8Audio, KTVHCContentTypeM3U8AudioX];
     for (NSString *object in listM3u8) {
         if ([[response.contentType lowercaseString] containsString:[object lowercaseString]]) {
             isM3u8 = YES;

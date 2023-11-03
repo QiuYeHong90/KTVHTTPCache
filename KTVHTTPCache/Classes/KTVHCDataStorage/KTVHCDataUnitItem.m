@@ -102,5 +102,9 @@
     [self.coreLock unlock];
 }
 
++ (BOOL)supportsSecureCoding
+{
+    return  YES;
+}
 
 @end

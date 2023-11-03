@@ -17,7 +17,7 @@
 
 @end
 
-@interface KTVHCDataUnit : NSObject <NSCoding, NSLocking>
+@interface KTVHCDataUnit : NSObject <NSCoding, NSSecureCoding, NSLocking>
 
 + (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;

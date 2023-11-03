@@ -23,11 +23,22 @@
     if (self = [super init]) {
         self.path = path;
         NSMutableArray *unitArray = nil;
-        @try {
-            unitArray = [NSKeyedUnarchiver unarchiveObjectWithFile:self.path];
-        } @catch (NSException *exception) {
-            KTVHCLogDataUnitQueue(@"%p, Init exception\nname : %@\breason : %@\nuserInfo : %@", self, exception.name, exception.reason, exception.userInfo);
+        NSData *data = [NSData dataWithContentsOfFile:self.path];
+        NSError *error;
+        
+        if (@available(iOS 11.0, *)) {
+             unitArray = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithArray:@[NSArray.class,NSDictionary.class, NSString.class, NSMutableArray.class, NSMutableDictionary.class, NSMutableString.class,  NSMutableData.class, NSData.class, NSNull.class, NSValue.class, NSDate.class, KTVHCDataUnit.class, KTVHCDataUnitItem.class]] fromData:data error:&error];
+            if (error) {
+                KTVHCLogDataUnitQueue(@"%p, error: %@", self, error.description);
+            }
+        } else {
+            @try {
+                unitArray = [NSKeyedUnarchiver unarchiveObjectWithFile:self.path];
+            } @catch (NSException *exception) {
+                KTVHCLogDataUnitQueue(@"%p, Init exception\nname : %@\breason : %@\nuserInfo : %@", self, exception.name, exception.reason, exception.userInfo);
+            }
         }
+        
         self.unitArray = [NSMutableArray array];
         for (KTVHCDataUnit *obj in unitArray) {
             if (obj.error) {

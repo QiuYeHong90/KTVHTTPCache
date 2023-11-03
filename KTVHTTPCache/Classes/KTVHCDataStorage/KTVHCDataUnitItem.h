@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface KTVHCDataUnitItem : NSObject <NSCopying, NSCoding, NSLocking>
+@interface KTVHCDataUnitItem : NSObject <NSCopying, NSSecureCoding, NSCoding, NSLocking>
 
 + (instancetype)new NS_UNAVAILABLE;
 

@@ -17,8 +17,9 @@ KTVHTTPCACHE_EXTERN NSString * const KTVHCContentTypeApplicationMPEG4;
 KTVHTTPCACHE_EXTERN NSString * const KTVHCContentTypeApplicationOctetStream;
 KTVHTTPCACHE_EXTERN NSString * const KTVHCContentTypeBinaryOctetStream;
 KTVHTTPCACHE_EXTERN NSString * const KTVHCContentTypeM3U8;
-
+KTVHTTPCACHE_EXTERN NSString * const KTVHCContentTypeM3U8X;
 KTVHTTPCACHE_EXTERN NSString * const KTVHCContentTypeM3U8Audio;
+KTVHTTPCACHE_EXTERN NSString * const KTVHCContentTypeM3U8AudioX;
 @class KTVHCDownload;
 
 @protocol KTVHCDownloadDelegate <NSObject>
